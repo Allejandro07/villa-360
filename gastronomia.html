@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GASTRONOMIA MAZAHUA</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;background:radial-gradient(ellipse at bottom, #6a6a7a 0%, #2a2a32 100%);font-family:sans-serif;padding:30px 0}
+.box{
+  width:90%;max-width:520px;
+  background:linear-gradient(180deg, #6b6b82 0%, #4a4a5e 100%);
+  border:18px solid transparent;
+  border-image:url('img/img1.jpeg') 35 round;
+  border-radius:18px;
+  padding:20px 15px 40px 15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+h1{text-align:center;color:#FFDF8A;letter-spacing:1px;font-size:20px;margin:0 0 25px 0;font-weight:900}
+
+.lista{display:flex;flex-direction:column;gap:28px}
+
+.card{
+  width:68%;
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(8px);
+  border-radius:14px;
+  padding:10px 10px 12px 10px;
+  border:1px solid rgba(255,255,255,0.25);
+  cursor:pointer;
+  transition:0.3s;
+}
+.card:hover{transform:scale(1.04);background:rgba(255,255,255,0.28)}
+.img-zoom{width:100%;height:135px;overflow:hidden;border-radius:10px;border:2px solid rgba(255,255,255,0.3)}
+.img-zoom img{width:100%;height:100%;object-fit:cover;transition:0.5s}
+.card:hover .img-zoom img{transform:scale(1.2)}
+
+/* ZIG-ZAG COMO TU FOTO */
+.card:nth-child(1){align-self:flex-start;margin-left:5px}
+.card:nth-child(2){align-self:flex-end;margin-right:5px}
+.card:nth-child(3){align-self:flex-start;margin-left:5px}
+.card:nth-child(4){align-self:flex-end;margin-right:5px}
+
+.titulo{color:#8ec8e8;font-weight:900;font-size:12px;text-align:center;margin:8px 0 3px 0}
+.desc{color:white;font-size:10.5px;text-align:center;line-height:1.3;margin:0}
+
+.btn{border:none;border-radius:100px;padding:9px 28px;font-weight:900;cursor:pointer;background:linear-gradient(90deg, #7AB8E6, #FFDF8A);color:#333;display:block;margin:35px auto 0 auto}
+.botones{
+  display:flex;
+  justify-content:flex-end; /* si solo es SIGUIENTE lo manda a la derecha */
+  padding:20px 10px 5px;
+  margin-top:10px;
+}
+
+/* Si pones los dos, usa esto para que queden separados como en la foto */
+.botones:has(.btn-atras){
+  justify-content:space-between;
+}
+
+.btn-atras, .btn-siguiente{
+  border:none;
+  border-radius:25px;
+  padding:12px 32px;
+  font-weight:900;
+  font-size:13px;
+  color:#000;
+  cursor:pointer;
+  background: linear-gradient(90deg, #8ED4F0 0%, #FFE99A 100%);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.4);
+  letter-spacing:0.5px;
+}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>GASTRONOMIA MAZAHUA</h1>
+
+<div class="lista">
+
+  <div class="card" onclick="verGastro(1)">
+    <div class="img-zoom"><img src="img/img19.jpeg"></div>
+    <p class="titulo">TAMALES DE OLLA</p>
+    <p class="desc">Deliciosos tamales envueltos en hoja de plátano con mole rojo</p>
+  </div>
+
+  <div class="card" onclick="verGastro(2)">
+    <div class="img-zoom"><img src="img/img20.jpeg"></div>
+    <p class="titulo">PULQUE MAZAHUA</p>
+    <p class="desc">Bebida tradicional fermentada del maguey, natural y curado</p>
+  </div>
+
+  <div class="card" onclick="verGastro(3)">
+    <div class="img-zoom"><img src="img/img21.jpeg"></div>
+    <p class="titulo">TORTILLAS HECHAS A MANO</p>
+    <p class="desc">Tortillas de maíz criollo hechas en comal de barro</p>
+  </div>
+
+</div>
+
+<div class="botones">
+    <button onclick="window.location.href= 'inicio.html'" class="btn-atras">ATRAS</button>
+    <button onclick="window.location.href= 'gastronomia2.html'" class="btn-siguiente">SIGUIENTE</button>
+  </div>
+
+</div>
+
+<script>
+function verGastro(id){
+  window.location.href = 'detalle-gastronomia.html?platillo=' + id;
+}
+</script>
+</body>
+</html>

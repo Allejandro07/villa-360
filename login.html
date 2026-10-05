@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOGIN</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:nowrap;flex-direction:row;padding:10px;background:#14141c;font-family:'Segoe UI',sans-serif;overflow:hidden;position:relative}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:0;transition:opacity .6s;background:radial-gradient(circle at 35% 45%, rgba(255,223,138,.28), rgba(20,20,28,0) 60%)}
+body.on::before{opacity:1}
+.lamp{order:1;flex-shrink:0;position:relative;width:170px;height:300px;cursor:pointer;border:none;background:none;padding:0}
+.shade{position:absolute;top:0;left:10px;width:150px;height:75px;border-radius:150px 150px 0 0;background:#8d8d96;transition:.5s}
+.pole{position:absolute;top:75px;left:77px;width:16px;height:200px;background:#cfcfd6;border-radius:4px}
+.base{position:absolute;bottom:0;left:35px;width:100px;height:14px;background:#cfcfd6;border-radius:10px}
+.cord{position:absolute;top:75px;left:128px;width:2px;height:70px;background:#555;transition:height .15s}
+.cord::after{content:"";position:absolute;bottom:-8px;left:-5px;width:12px;height:12px;border-radius:50%;background:#e0a96d}
+.lamp:active .cord{height:85px}
+body.on .shade{background:#fff;box-shadow:0 0 60px 25px rgba(255,223,138,.55)}
+.box{order:2;flex-shrink:0;width:300px;background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:20px solid transparent;border-image:url('img/img1.jpeg') 35 round;border-radius:18px;padding:25px 22px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;transform:translateY(20px) scale(.96);pointer-events:none;transition:opacity .6s, transform .6s}
+body.on .box{opacity:1;transform:none;pointer-events:auto}
+.box img{width:100px;height:100px;border-radius:50%;background:white;border:3px solid #FFDF8A;margin-bottom:8px;object-fit:cover}
+.box h1{color:#fff;letter-spacing:3px;font-weight:700;font-size:26px;margin:6px 0 16px}
+.campos{text-align:left;margin-left:5px}
+label{color:#bbb;font-size:13px}
+input{width:92%;padding:10px 12px;border-radius:8px;border:none;margin:5px 0 14px;background:rgba(255,255,255,.1);color:#fff;outline:none}
+input::placeholder{color:rgba(255,255,255,.4)}
+input:focus{background:rgba(255,255,255,.18)}
+.btn{border:none;border-radius:10px;padding:11px 30px;font-weight:900;cursor:pointer;background:linear-gradient(90deg,#b8962e,#fff0a8,#b8962e);color:#333;width:200px}
+.btn:hover{filter:brightness(1.1)}
+.reg{margin-top:14px}
+.reg a{color:#FFDF8A;font-weight:bold;font-size:14px}
+@media (max-width:560px){body{gap:8px}.lamp{transform:scale(.6);margin:-60px -34px}.box{width:250px;padding:15px 12px}.btn{width:100%}}
+</style>
+</head>
+<body>
+<button class="lamp" id="lampara" aria-label="Encender o apagar la lámpara">
+  <div class="shade"></div><div class="pole"></div><div class="cord"></div><div class="base"></div>
+</button>
+<div class="box">
+  <img src="img/img2.jpeg" alt="Logo">
+  <h1>LOGIN</h1>
+  <form action="inicio.html">
+    <div class="campos">
+      <label>Usuario:</label><br><input type="text" placeholder="usuario" required><br>
+      <label>Contraseña:</label><br><input type="password" placeholder="contraseña" required>
+    </div>
+    <button type="submit" class="btn">Entrar</button>
+  </form>
+  <div class="reg"><a href="registro.html">No tengo cuenta - Registrarme</a></div>
+</div>
+<script>
+    const body = document.body;
+    const btn = document.getElementById('lampara');
+  
+    // Si actualizas la página (F5), forzar que inicie apagada
+    const nav = performance.getEntriesByType("navigation")[0];
+    if(nav && nav.type === "reload"){
+      sessionStorage.setItem('lampara','off');
+    }
+  
+    // Si es la primera vez o cerraste el navegador, inicia APAGADA
+    if(sessionStorage.getItem('lampara') === null){
+      sessionStorage.setItem('lampara','off');
+    }
+  
+    // Aplica el estado guardado
+    if(sessionStorage.getItem('lampara') === 'on'){
+      body.classList.add('on');
+    } else {
+      body.classList.remove('on');
+    }
+  
+    btn.addEventListener('click', () => {
+      body.classList.toggle('on');
+      sessionStorage.setItem('lampara', body.classList.contains('on')? 'on' : 'off');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CULTURA MAZAHUA</title>
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(ellipse at bottom, #6a6a7a 0%, #2a2a32 100%);
+  font-family:sans-serif;
+  padding:20px 0;
+}
+
+.inicio-box{
+  width:85%;
+  max-width:340px;
+  background:linear-gradient(135deg, rgba(200,200,200,0.35), rgba(150,150,150,0.25), rgba(180,180,180,0.32));
+  backdrop-filter:blur(18px);
+  /* MARCO CORREGIDO - ASÍ SÍ SE VE */
+  border:18px solid transparent;
+  border-image-source: url('img/img1.jpeg');
+  border-image-slice: 30;
+  border-image-repeat: round;
+  padding:25px 20px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.foto-mazahua{
+  width:130px;
+  height:130px;
+  object-fit:cover;
+  border-radius:14px;
+  border:3px solid #7AB8E6;
+  box-shadow:0 0 12px rgba(122,184,230,0.6);
+  display:block;
+  margin:0 auto 8px auto;
+  background:#444;
+}
+
+.link-mazahua{
+  font-weight:900;
+  text-decoration:none;
+  background:rgba(255,255,255,0.9);
+  padding:4px 12px;
+  border-radius:8px;
+  display:inline-block;
+  margin-bottom:28px;
+  font-size:14px;
+}
+button{
+    border:none;
+    border-radius:100px;
+    padding:5px 28px;
+    font-weight:900;
+    cursor:pointer;
+    margin:6px;
+    width:150px
+}
+.btn4{background:linear-gradient(90deg, #44e0af, #ea689c);color:#555}
+</style>
+</head>
+<body>
+<div class="inicio-box">
+<h1 style="color:#FFDF8A;letter-spacing:3px;font-weight:900;margin:0 0 25px 0">INICIO</h1>
+
+<!-- LUGARES - CORREGIDA LA RUTA -->
+<img src="img/img3.jpeg" class="foto-mazahua" style="border-color:#7AB8E6" alt="Lugares" onerror="this.src='https://picsum.photos/200/200?random=10'">
+<a href="lugares.html" class="link-mazahua" style="color:#3A8AC0">LUGARES MAGICOS</a>
+
+<!-- ARTESANIAS - CORREGIDA LA RUTA -->
+<img src="img/img4.jpeg" class="foto-mazahua" style="border-color:#FF7A8A;box-shadow:0 0 12px rgba(255,122,138,0.6)" alt="Artesanias" onerror="this.src='https://picsum.photos/200/200?random=11'">
+<a href="artesanias.html" class="link-mazahua" style="color:#C94A5A">ARTESANIAS</a>
+
+<!-- GASTRONOMIA - CORREGIDA LA RUTA -->
+<img src="img/img5.jpeg" class="foto-mazahua" style="border-color:#FFDF8A;box-shadow:0 0 12px rgba(255,223,138,0.6)" alt="Gastronomia" onerror="this.src='https://picsum.photos/200/200?random=12'">
+<a href="gastronomia.html" class="link-mazahua" style="color:#8A7A30">GASTRONOMIA</a>
+
+<div style="margin-top:15px">
+<a href="bienvenida.html" style="color:#93e7f1;text-decoration:none;margin-right:20px">ATRAS</a>
+<a href="multimedia.html"><button class="btn4">MULTIMEDIA</button></a>
+<a href="ayuda.html" style="color:#FF8EC7;font-weight:bold;text-decoration:none">AYUDA</a>
+</div>
+</div>
+</body>
+</html>

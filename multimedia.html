@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia</title>
+    <style>
+        *{box-sizing:border-box}
+        body{
+  background: radial-gradient(circle at center, #4B4B5E 0%, #2F2F3A 100%);
+  min-height: 100vh;
+}
+        center{ display:block; max-width:1100px; margin:0 auto; padding:20px; }
+        
+        h1{
+          background: linear-gradient(90deg,#6ca6f2,#e8b847);
+          color:white; margin:-20px -20px 10px; padding:22px;
+          letter-spacing:3px;
+        }
+        h2{ color:#f2eded; margin-bottom:25px; font-weight:300; letter-spacing:2px; }
+        
+        h3{
+          text-align:left; margin:35px 0 15px 10px;
+          color:#dfdbdb; border-left:6px solid #E6A000;
+          padding-left:12px; font-size:1.4rem;
+        }
+        
+        img{
+          width:500px; height:400px; object-fit:cover;
+          border-radius:12px; border:3px solid #E6A000;
+          margin:10px; box-shadow:0 4px 10px rgba(0,0,0,.2);
+        }
+        
+        video{
+          width:90%; max-width:480px; border-radius:12px;
+          border:3px solid #1D4A7A; margin:15px;
+          background:black;
+        }
+        .fila{ 
+            display:flex;
+            justify-content:center; 
+            gap:30px; margin-bottom:20px;
+        }
+        .fila img{
+            width:150px; 
+            height:auto; 
+            border:3px solid #E6A000; 
+            border-radius:12px; 
+        }
+        figcaption{
+            color:white; 
+            margin-top:8px; 
+            font-size:16px; 
+        }
+        /* Haz la tarjeta más ancha */
+.card{
+  width: 95% !important;
+}
+
+/* Haz que la imagen llene la tarjeta */
+.card img{
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  transform: scale(1.2); /* la hace 20% más grande, quítalo si no lo quieres */
+}
+        </style>
+</head>
+<body>
+    <center>
+    <h1>MULTIMEMDIA</h1>
+    <h2>NUESTRA COMUNIDAD</h2>
+    <!--
+        RUTAS DE LOS ARCHIVOS
+        Cambia solo lo que está dentro de src="...". Ejemplos para Windows:
+          - Ruta completa: file:///C:/Users/TU_USUARIO/Music/cancion.mp3
+          - Misma carpeta que este HTML: cancion.mp3
+        Reglas: usa / (no \), empieza con file:/// y cambia cada espacio por %20.
+    -->
+
+    <h3>Imagen</h3>
+    <!-- RUTA DE LA IMAGEN: cambia el src -->
+     <div class="fila">
+     <figure>
+    <img src="img/img22.jpeg" alt="no foul" width="600">
+    <figcaption>img1</figcaption>
+</figure>
+<figure>
+    <img src="C:\Users\SONY\Pictures\images\.jpg" alt="no foul" width="200">
+    <figcaption>im2</figcaption>
+</figure>
+<figure>
+    <img src="C:\Users\SONY\Pictures\images\.jpg" alt="no foul" width="200">
+    <figcaption>img3</figcaption>
+</figure>
+    <br>
+</div>
+    <h3>Video</h3>
+    <video controls width="480">
+        <!-- RUTA DEL VIDEO: cambia el src -->
+        <source src="C:\Users\SONY\Documents\proyecto villa\img\video1.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+    </video>
+    <br>
+    <label style="color: antiquewhite;">video 1</label>
+    <br><br><br><br>
+    <video controls width="480">
+        <source src="ruta" type="video/mp4">
+    </video>
+    <br>
+    <label style="color: ghostwhite;">video 2</label>
+
+</center>
+</body>
+</html>

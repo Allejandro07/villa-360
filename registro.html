@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REGISTRO</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:nowrap;flex-direction:row;padding:10px;background:#14141c;font-family:'Segoe UI',sans-serif;overflow:hidden;position:relative}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:0;transition:opacity .6s;background:radial-gradient(circle at 35% 45%, rgba(255,223,138,.28), rgba(20,20,28,0) 60%)}
+body.on::before{opacity:1}
+.lamp{order:1;flex-shrink:0;position:relative;width:170px;height:300px;cursor:pointer;border:none;background:none;padding:0}
+.shade{position:absolute;top:0;left:10px;width:150px;height:75px;border-radius:150px 150px 0 0;background:#8d8d96;transition:.5s}
+.pole{position:absolute;top:75px;left:77px;width:16px;height:200px;background:#cfcfd6;border-radius:4px}
+.base{position:absolute;bottom:0;left:35px;width:100px;height:14px;background:#cfcfd6;border-radius:10px}
+.cord{position:absolute;top:75px;left:128px;width:2px;height:70px;background:#555;transition:height .15s}
+.cord::after{content:"";position:absolute;bottom:-8px;left:-5px;width:12px;height:12px;border-radius:50%;background:#e0a96d}
+.lamp:active .cord{height:85px}
+body.on .shade{background:#fff;box-shadow:0 0 60px 25px rgba(255,223,138,.55)}
+.box{order:2;flex-shrink:0;width:320px;background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:20px solid transparent;border-image:url('img/img1.jpeg') 35 round;border-radius:18px;padding:22px 20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;transform:translateY(20px) scale(.96);pointer-events:none;transition:opacity .6s, transform .6s}
+body.on .box{opacity:1;transform:none;pointer-events:auto}
+.box img{width:90px;height:90px;border-radius:50%;background:white;border:3px solid #FFDF8A;margin-bottom:8px;object-fit:cover}
+.box h1{color:#fff;letter-spacing:2px;font-weight:700;font-size:22px;margin:6px 0 14px}
+.campos{text-align:left;margin-left:5px}
+label{color:#bbb;font-size:12px}
+input{width:92%;padding:9px 12px;border-radius:8px;border:none;margin:4px 0 12px;background:rgba(255,255,255,.1);color:#fff;outline:none}
+input::placeholder{color:rgba(255,255,255,.4)}
+.btn{border:none;border-radius:10px;padding:11px 30px;font-weight:900;cursor:pointer;background:linear-gradient(90deg,#b8962e,#fff0a8,#b8962e);color:#333;width:200px}
+.reg a{color:#FFDF8A;font-weight:bold;font-size:13px;text-decoration:none}
+/* POPUP 1 - ESTILO DE TU FOTO 1 */
+dialog#popupCuenta{border:none;border-radius:24px;width:85%;max-width:340px;background:#f1f1f1;box-shadow:0 15px 35px rgba(0,0,0,.6);padding:30px 20px;text-align:center}
+dialog#popupCuenta::backdrop{background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
+.btn-negro{background:#2e2e2e;color:white;border:none;border-radius:100px;padding:10px 32px;font-weight:800;cursor:pointer;font-size:15px}
+</style>
+</head>
+<body>
+<button class="lamp" id="lampara"><div class="shade"></div><div class="pole"></div><div class="cord"></div><div class="base"></div></button>
+<div class="box">
+  <img src="img/img2.jpeg" alt="Logo"><h1>REGISTRO</h1>
+  <form id="formRegistro" action="bienvenida.html" method="get">
+    <div class="campos">
+      <label>Nombre:</label><br><input type="text" name="nombre" placeholder="nombre(s)" required maxlength="20"><br>
+      <label>Nombre de Usuario:</label><br><input type="text" name="usuario" placeholder="coloca un nombre" required maxlength="20"><br>
+      <label>Correo:</label><br><input type="email" name="correo" placeholder="correo@example.com" required><br>
+      <label>Contraseña:</label><br><input type="password" name="pass" placeholder="contraseña" required maxlength="20">
+    </div>
+    <button type="submit" class="btn">Crear Cuenta</button>
+  </form>
+  <div class="reg" style="margin-top:14px"><a href="login.html">Volver al Login</a></div>
+</div>
+
+<dialog id="popupCuenta">
+  <p style="font-weight:900;color:#444;font-size:18px;margin:0 0 20px">¡Cuenta creada exitosamente!</p>
+  <button id="btnAceptarCuenta" class="btn-negro">Aceptar</button>
+</dialog>
+
+<script>
+    const body=document.body, btn=document.getElementById('lampara');
+    
+    // Si actualizas, inicia apagada
+    const nav = performance.getEntriesByType("navigation")[0];
+    if(nav && nav.type === "reload"){
+      sessionStorage.setItem('lampara','off');
+    }
+    
+    if(sessionStorage.getItem('lampara') === null){
+      sessionStorage.setItem('lampara','off');
+    }
+    
+    const est=sessionStorage.getItem('lampara');
+    if(est==='on') body.classList.add('on'); else body.classList.remove('on');
+    btn.addEventListener('click',()=>{body.classList.toggle('on'); sessionStorage.setItem('lampara',body.classList.contains('on')?'on':'off');});
+    
+    const form=document.getElementById('formRegistro');
+    const popupCuenta=document.getElementById('popupCuenta');
+    form.addEventListener('submit',(e)=>{e.preventDefault(); popupCuenta.showModal();});
+    document.getElementById('btnAceptarCuenta').addEventListener('click',()=>{
+      localStorage.setItem('mostrarBienvenida','true'); // ESTE SE QUEDA CON localStorage
+      form.submit();
+    });
+    </script>
+</body>
+</html>

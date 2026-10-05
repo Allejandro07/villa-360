@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lugares Mazahuas</title>
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  background:radial-gradient(ellipse at bottom, #6a6a7a 0%, #2a2a32 100%);
+  font-family:sans-serif;
+  padding:30px 0;
+}
+
+/* ESTE ES EL TRUCO - CONTENEDOR PADRE */
+.wrapper{
+  position: relative;
+  width: 92%;
+  max-width: 520px;
+  overflow: visible; /* ESTO EVITA QUE SE CORTE EL BOTON */
+}
+
+.box{
+  width: 100%;
+  background:linear-gradient(135deg, rgba(200,200,200,0.35), rgba(150,150,150,0.25), rgba(180,180,180,0.32));
+  backdrop-filter:blur(18px);
+  border:18px solid transparent;
+  border-image-source: url('img/img1.jpeg');
+  border-image-slice: 35;
+  border-image-repeat: round;
+  padding:25px 20px 70px 20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  box-sizing:border-box;
+}
+
+h1{font-size:20px;text-align:center;color:#FFDF8A;font-weight:900;margin:0 0 20px 0}
+.card{
+  width:68%;
+  background:rgba(255,255,255,0.14);
+  border-radius:14px;
+  padding:10px;
+  margin:14px 0;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.25);
+  box-sizing:border-box;
+}
+.izq{margin-right:auto;margin-left:0}
+.der{margin-left:auto;margin-right:0}
+.img-zoom{width:100%;height:125px;overflow:hidden;border-radius:10px;border:2px solid rgba(255,255,255,0.4);background:#3a3a44}
+.img-zoom img{width:100%;height:100%;object-fit:cover;display:block}
+.titulo{color:#7AB8E6;font-weight:900;margin:7px 0 3px 0;font-size:12px;text-align:center}
+.desc{font-size:11px;text-align:center;color:#f0f0f0;margin:0;line-height:1.3}
+
+.btn{
+  border:none;
+  border-radius:100px;
+  padding:10px 28px;
+  font-weight:900;
+  cursor:pointer;
+  background:linear-gradient(90deg, #7AB8E6, #FFDF8A);
+  color:#333;
+  text-decoration:none;
+  display:inline-block;
+  font-size:14px;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+}
+/* ZOOM */
+.img-zoom{
+  width:100%;
+  height:125px;
+  overflow:hidden;
+  border-radius:10px;
+  border:2px solid rgba(255,255,255,0.4);
+  background:#3a3a44;
+}
+.img-zoom img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.5s ease;
+}
+.card:hover .img-zoom img{
+  transform:scale(1.25);
+}
+.titulo{color:#7AB8E6;font-weight:900;margin:7px 0 3px 0;font-size:12px;text-align:center;line-height:1.2}
+.desc{font-size:11px;text-align:center;color:#f0f0f0;margin:0;line-height:1.3}
+
+
+/* AHORA SI - SIGUIENTE ARRIBA A LA DERECHA */
+.btn-siguiente{
+  position: absolute;
+  top: 735px;
+  right: 120px;
+  z-index: 10;
+  left: 350px;
+  right: auto;
+}
+
+/* ATRAS ABAJO CENTRADO */
+.btn-atras{
+  position: absolute;
+  bottom: 15px;
+  left: 15%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- BOTON SIGUIENTE - VA FUERA DEL BOX PERO DENTRO DEL WRAPPER -->
+  <a href="lugares2.html" class="btn btn-siguiente">SIGUIENTE</a>
+
+  <div class="box">
+    <h1>LUGARES MAZAHUAS</h1>
+
+    <div class="card izq" onclick="verLugar(1)">
+      <div class="img-zoom"><img src="img/img6.jpeg" alt="Chalmita"></div>
+      <p class="titulo">CHALMITA</p>
+      <p class="desc">Hermoso lugar para vacacionar con tu familia</p>
+    </div>
+
+    <div class="card der" onclick="verLugar(2)">
+      <div class="img-zoom"><img src="img/img7.jpeg" alt="Mariposa"></div>
+      <p class="titulo">RESERVA DE LA MARIPOSA MONARCA</p>
+      <p class="desc">Lugar turístico para visitar las mariposas, especie en peligro de extinción</p>
+    </div>
+
+    <div class="card izq" onclick="verLugar(3)">
+      <div class="img-zoom"><img src="img/img8.jpeg" alt="Valle"></div>
+      <p class="titulo">VALLE ESCONDIDO (DISNEY)</p>
+      <p class="desc">Lindo lugar para visita turística</p>
+    </div>
+
+    <!-- BOTON ATRAS - DENTRO DEL BOX -->
+    <a href="inicio.html" class="btn btn-atras">ATRAS</a>
+  </div>
+</div>
+
+<script>
+function verLugar(id){ window.location.href = 'detalle-lugar.html?lugar=' + id; }
+</script>
+</body>
+</html>

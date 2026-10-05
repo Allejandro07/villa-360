@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Bienvenida</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;background:radial-gradient(ellipse at bottom, #6a6a7a 0%, #2a2a32 100%);font-family:sans-serif}
+.box{width:70%;max-width:300px;background:linear-gradient(135deg, rgba(200,200,200,0.35), rgba(150,150,150,0.25), rgba(180,180,180,0.32));backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:30px 22px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+button{border:none;border-radius:100px;padding:10px 28px;font-weight:900;cursor:pointer;margin:6px;width:160px}
+.btn1{background:linear-gradient(90deg, #7AB8E6, #9AC8EB);color:white}
+.btn2{background:linear-gradient(90deg, #FF7A8A, #FF8EC7);color:white}
+.btn3{background:linear-gradient(90deg, #FFDF8A, #FFE9A8);color:#555}
+.btn4{background:linear-gradient(90deg, #44e0af, #ea689c);color:#555}
+dialog#popupBienvenida{border:none;border-radius:22px;width:88%;max-width:330px;background:#f2f2f2;box-shadow:0 15px 35px rgba(0,0,0,0.5);padding:28px 20px;text-align:center}
+dialog#popupBienvenida::backdrop{background:rgba(0,0,0,0.6);backdrop-filter:blur(6px)}
+.btn-degradado{background:linear-gradient(90deg, #FF7A9E, #8AB8E6);color:white;border:2px solid #FFC74A;border-radius:100px;padding:10px 32px;font-weight:900;cursor:pointer;font-size:15px}
+</style>
+</head>
+<body>
+<div class="box">
+<h1 style="color:#FFDF8A;letter-spacing:3px;font-weight:900">¡BIENVENIDO!</h1>
+<p style="color:white;font-weight:bold">Cultura Mazahua<br><span style="color:#7AB8E6">Una cultura mágica</span></p><br>
+<a href="inicio.html"><button class="btn1">INICIO</button></a><br>
+<a href="ayuda.html"><button class="btn2">AYUDA</button></a><br>
+<a href="acerca.html"><button class="btn3">ACERCA</button></a>
+<a href="multimedia.html"><button class="btn4">MULTIMEDIA</button></a>
+</div>
+
+<dialog id="popupBienvenida">
+<p style="font-weight:900;color:#333;font-size:18px">¡Bienvenido a la Cultura Mazahua!</p>
+<p style="color:#777;font-size:14px">Tu cuenta ha sido creada correctamente.<br>Explora lugares mágicos, artesanías y gastronomía</p>
+<form method="dialog"><button class="btn-degradado">Aceptar</button></form>
+</dialog>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const popup = document.getElementById('popupBienvenida');
+  // Si viene del registro, muéstralo aunque ya lo haya visto antes
+  if (localStorage.getItem('mostrarBienvenida') === 'true') {
+    popup.showModal();
+    localStorage.removeItem('mostrarBienvenida');
+    localStorage.setItem('popupBienvenidaVisto','si');
+  }
+});
+</script>
+</body>
+</html>
